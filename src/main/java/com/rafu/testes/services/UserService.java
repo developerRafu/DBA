@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.rafu.testes.entities.User;
 import com.rafu.testes.repositories.UserRepository;
+import com.rafu.testes.services.exceptions.ObjectNotFoundException;
+
 
 @Service
 public class UserService {
@@ -17,9 +19,9 @@ public class UserService {
 	public List<User> findAll() {
 		return repository.findAll();
 	}
-	public User findById(Long id) {
+	public User findById(Long id){
 		Optional<User> obj = repository.findById(id);
-		return obj.orElseGet(null);
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id:"+id+", Tipo: "+User.class.getName()));
 	}
 
 }
