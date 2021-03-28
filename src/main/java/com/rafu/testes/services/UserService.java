@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.rafu.testes.entities.User;
 import com.rafu.testes.repositories.UserRepository;
+import com.rafu.testes.services.exceptions.DataException;
 import com.rafu.testes.services.exceptions.ObjectNotFoundException;
 
 
@@ -47,6 +48,10 @@ public class UserService {
 	}
 	public void delete(Long id) {
 		User user = findById(id);
-		repository.deleteById(id);
+		try {
+			repository.deleteById(user.getId());
+		} catch (Exception e) {
+			throw new DataException("Usuário possui documentos associados");
+		}
 	}
 }
