@@ -45,4 +45,8 @@ public class UserService {
 		}
 		return repository.save(obj);
 	}
+	public void delete(Long id) {
+		User user = findById(id);
+		repository.deleteById(id);
+	}
 }
