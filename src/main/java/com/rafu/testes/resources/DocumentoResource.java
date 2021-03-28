@@ -18,14 +18,15 @@ import com.rafu.testes.services.DocumentoService;
 public class DocumentoResource {
 	@Autowired
 	private DocumentoService service;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Documento>> findAll() {
 		List<Documento> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-	@GetMapping(value="/{id}")
-	public ResponseEntity<Documento> findById(@PathVariable Long id){
+
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<Documento> findById(@PathVariable Long id) {
 		Documento obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}

@@ -18,7 +18,7 @@ public class Documento implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Byte[] doc;
-	private int typeDoc;
+	private Integer typeDoc;
 	
 	@JsonIgnore
 	@ManyToOne
@@ -52,11 +52,11 @@ public class Documento implements Serializable{
 		this.doc = doc;
 	}
 
-	public int getTypeDoc() {
+	public Integer getTypeDoc() {
 		return typeDoc;
 	}
 
-	public void setTypeDoc(int typeDoc) {
+	public void setTypeDoc(Integer typeDoc) {
 		this.typeDoc = typeDoc;
 	}
 
