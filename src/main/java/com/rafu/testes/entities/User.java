@@ -111,6 +111,10 @@ public class User implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", cnpj=" + cnpj + ", telefone=" + telefone
+				+ ", senha=" + senha + "]";
+	}	
 }

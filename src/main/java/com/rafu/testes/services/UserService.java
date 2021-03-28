@@ -23,5 +23,26 @@ public class UserService {
 		Optional<User> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id:"+id+", Tipo: "+User.class.getName()));
 	}
-
+	
+	public User create(User obj) {
+		obj.setId(null);
+		return repository.save(obj);
+	}
+	
+	public User update(Long id, User user) {
+		User obj = findById(id);
+		if(user.getEmail()!=null) {
+			obj.setName(user.getName());
+		}
+		if(user.getEmail()!=null) {
+			obj.setEmail(user.getEmail());	
+		}
+		if(user.getTelefone()!=null) {
+			obj.setTelefone(user.getTelefone());
+		}
+		if(user.getCnpj()!=null) {
+			obj.setCnpj(user.getCnpj());	
+		}
+		return repository.save(obj);
+	}
 }
